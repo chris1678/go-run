@@ -30,7 +30,7 @@ func Initialize(conf string) {
 	//redis缓存初始化
 	cache.Initialize()
 	//定时任务初始化
-	crons.Initialize()
+	crons.Initialize([]crons.JobModel{})
 	//验证码初始化
 	captcha.Initialize()
 	//	队列初始化
@@ -60,6 +60,11 @@ func Run(handles *gin.Engine) *http.Server {
 	}()
 
 	logger.LogHelper.Infof("-  Local:   http://localhost:%d/", config.ApplicationConfig.Port)
+
+	//启动websocket
+	//go ws.WebsocketManager.Start()
+	//go ws.WebsocketManager.SendService()
+	//go ws.WebsocketManager.SendAllService()
 
 	return srv
 

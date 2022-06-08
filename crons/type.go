@@ -1,10 +1,8 @@
 package crons
 
-import "github.com/robfig/cron/v3"
-
 type Job interface {
 	Run()
-	addJob(*cron.Cron) (int, error)
+	addJob() (int, error)
 }
 
 type JobsExec interface {
